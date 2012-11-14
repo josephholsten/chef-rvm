@@ -18,9 +18,7 @@
 #
 
 # install rvm api gem during chef compile phase
-gem_package 'rvm' do
-  action :nothing
-end.run_action(:install)
+chef_gem 'rvm'
 
 require 'rubygems'
 Gem.clear_paths
@@ -35,7 +33,6 @@ end
 
 class Chef::Recipe
   # mix in recipe helpers
-  include Chef::RVM::ShellHelpers
   include Chef::RVM::RecipeHelpers
   include Chef::RVM::StringHelpers
 end
